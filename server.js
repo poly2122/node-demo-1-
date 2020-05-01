@@ -24,38 +24,27 @@ var server = http.createServer(function (request, response) {
     console.log('有个傻子发请求过来啦！路径（带查询参数）为：' + pathWithQuery)
 
     if (path === '/') {
-        response.statusCode = 299;
+        response.statusCode = 200
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
-        response.setHeader('poly', 'lalal')
-
         response.write(`
-        <!DOCTYPE html>
-        <head>
-        <link rel="stylesheet" href="/x">
-
+        <!DOCTYPE html>
+        <head>
+        <link rel="stylesheet" href="/x">
         </head>
-        <body>
-        <h1>Lisa 永远都pink你</h1>
-        <script src="/y"></script>
-        </body>
-        `)
+        <body>
+        <h1>Lisa 永远都pink你</h1>
+        </body>
+        `)
         response.end()
     } else if (path === '/x') {
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/css;charset=utf-8')
         response.write(`body{color: red;}`)
         response.end()
-    } else if (path === '/y') {
-        response.statusCode = 200
-        response.setHeader('Content-Type', 'text/javascript;charset=utf-8')
-        response.write(`console.log('这是js内容')`);
-        response.end();
-
-
     } else {
         response.statusCode = 404
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
-        response.write(`<h1>你访问的页面不存在</h1>`)
+        response.write(`你访问的页面不存在`)
         response.end()
     }
 
